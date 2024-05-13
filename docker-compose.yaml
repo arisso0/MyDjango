@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  postgres_db:
+    image: postgres
+    container_name: postgres_django
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - custom
+networks:
+  custom:
+    driver: bridge
+volumes:
+  db_data:
